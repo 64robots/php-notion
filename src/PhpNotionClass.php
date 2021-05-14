@@ -1,6 +1,6 @@
 <?php
 
-namespace R64robots\PhpNotion;
+namespace R64\PhpNotion;
 
 class PhpNotionClass
 {

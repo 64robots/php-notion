@@ -1,6 +1,6 @@
 <?php
 
-namespace R64robots\PhpNotion\Tests;
+namespace R64\PhpNotion\Tests;
 
 use PHPUnit\Framework\TestCase;
 

@@ -16,7 +16,8 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0"
+        "php": "^7.4|^8.0",
+        "guzzlehttp/guzzle": "^7.3"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",
@@ -25,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "R64robots\\PhpNotion\\": "src"
+            "R64\\PhpNotion\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "R64robots\\PhpNotion\\Tests\\": "tests"
+            "R64\\PhpNotion\\Tests\\": "tests"
         }
     },
     "scripts": {

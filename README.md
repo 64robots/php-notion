@@ -12,13 +12,13 @@ This is a package to use Notion from PHP.
 You can install the package via composer:
 
 ```bash
-composer require 64robots/php_notion
+composer require 64robots/php-notion
 ```
 
 ## Usage
 
 ```php
-$phpNotion = new 64robots\PhpNotion();
+$phpNotion = new R64\PhpNotion();
 echo $phpNotion->echoPhrase('Hello, Notion!');
 ```
 
