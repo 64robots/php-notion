@@ -12,7 +12,7 @@ class PageResponse
             "last_edited_time" => "2021-05-14T13:53:00.000Z",
             "parent" => [
                 "type" => "page_id",
-                "page_id" => "89361b82-3970-4663-afa8-15cb42b37c94"
+                "page_id" => "89361b82-3970-4663-afa8-15cb42b37c94",
             ],
             "archived" => false,
             "properties" => [
@@ -24,7 +24,7 @@ class PageResponse
                             "type" => "text",
                             "text" => [
                                 "content" => "Example page",
-                                "link" => null
+                                "link" => null,
                             ],
                             "annotations" => [
                                 "bold" => false,
@@ -32,14 +32,14 @@ class PageResponse
                                 "strikethrough" => false,
                                 "underline" => false,
                                 "code" => false,
-                                "color" => "default"
+                                "color" => "default",
                             ],
                             "plain_text" => "Example page",
-                            "href" => null
-                        ]
-                    ]
-                ]
-            ]
+                            "href" => null,
+                        ],
+                    ],
+                ],
+            ],
         ]);
     }
 }
