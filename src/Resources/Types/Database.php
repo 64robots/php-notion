@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace R64\PhpNotion\Resources;
+namespace R64\PhpNotion\Resources\Types;
 
 class Database
 {

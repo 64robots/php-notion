@@ -3,7 +3,7 @@
 namespace R64\PhpNotion\Tests;
 
 use R64\PhpNotion\Exceptions\NotionResourceException;
-use R64\PhpNotion\Resources\Database;
+use R64\PhpNotion\Resources\Types\Database;
 use R64\PhpNotion\Tests\mocks\DatabaseResponse;
 
 class DatabasesTest extends TestCase

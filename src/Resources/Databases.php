@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace R64\PhpNotion\Resources;
 
 use R64\PhpNotion\Client\NotionClient;
+use R64\PhpNotion\Resources\Types\Database;
 
 class Databases
 {
