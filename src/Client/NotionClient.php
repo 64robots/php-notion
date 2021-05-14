@@ -48,7 +48,8 @@ class NotionClient
             $this->successful = $response->getReasonPhrase() === 'OK';
             $this->status = $response->getStatusCode();
 
-            return json_decode($response->getBody());;
+            return json_decode($response->getBody());
+            ;
         } catch (Exception $exception) {
             $this->recordError($exception);
         }
