@@ -1,14 +1,15 @@
-# Package to use Notion API from PHP
+# Access Notion API from you PHP application
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/64robots/php_notion.svg?style=flat-square)](https://packagist.org/packages/64robots/php_notion)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/64robots/php_notion/run-tests?label=tests)](https://github.com/64robots/php_notion/actions?query=workflow%3ATests+branch%3Amaster)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/64robots/php_notion/Check%20&%20fix%20styling?label=code%20style)](https://github.com/64robots/php_notion/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
-[![Total Downloads](https://img.shields.io/packagist/dt/64robots/php_notion.svg?style=flat-square)](https://packagist.org/packages/64robots/php_notion)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/64robots/php-notion.svg?style=flat-square)](https://packagist.org/packages/64robots/php-notion)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/64robots/php-notion/run-tests?label=tests)](https://github.com/64robots/php-notion/actions?query=workflow%3ATests+branch%3Amaster)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/64robots/php-notion/Check%20&%20fix%20styling?label=code%20style)](https://github.com/64robots/php-notion/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/64robots/php-notion.svg?style=flat-square)](https://packagist.org/packages/64robots/php-notion)
 
-This is a package to use Notion from PHP.
+This package allows you to use the Notion API from PHP.
 
 ## Installation
 
+This package requires PHP => 7.4.
 You can install the package via composer:
 
 ```bash
@@ -17,9 +18,25 @@ composer require 64robots/php-notion
 
 ## Usage
 
+You need to create an instance of the `Notion` class using your [Notion Internal Integration Token](https://developers.notion.com/docs/getting-started)
+
+Now you can invoke the resource method you need (`databases` in this example) 
+
 ```php
-$phpNotion = new R64\PhpNotion();
-echo $phpNotion->echoPhrase('Hello, Notion!');
+use R64\PhpNotion\Notion;
+
+$notion = new Notion('secret_access_token');
+
+$database = $notion->databases()->retrieve('a65b5216-46cb-479b-961e-67cc7b05a56d');
+```
+## Resources
+
+### Databases
+
+#### Retrieve a Database
+[Notion Retrieve Database documentation](https://developers.notion.com/reference/get-database)
+```php
+$database = $notion->databases()->retrieve('a65b5216-46cb-479b-961e-67cc7b05a56d');
 ```
 
 ## Testing
