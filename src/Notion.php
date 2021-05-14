@@ -24,6 +24,9 @@ class Notion
 
     public function databases(): Databases
     {
+        /**
+         * @psalm-suppress RedundantPropertyInitializationCheck
+         */
         if (! isset($this->databases)) {
             $this->databases = new Databases($this->notionClient);
         }

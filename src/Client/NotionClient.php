@@ -11,6 +11,7 @@ class NotionClient
     private Client $client;
     private bool $successful;
     private int $status;
+    private string $message;
 
     public function __construct(
         string $baseUri,
@@ -49,7 +50,7 @@ class NotionClient
             $this->successful = $response->getReasonPhrase() === 'OK';
             $this->status = $response->getStatusCode();
 
-            return json_decode($response->getBody());
+            return json_decode((string)$response->getBody());
         } catch (Exception $exception) {
             $this->recordError($exception);
         }
