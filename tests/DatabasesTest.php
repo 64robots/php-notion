@@ -7,15 +7,15 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use R64\PhpNotion\Integrations\NotionClient;
-use R64\PhpNotion\PhpNotionClass;
+use R64\PhpNotion\Client\NotionClient;
+use R64\PhpNotion\Notion;
 use R64\PhpNotion\Resources\Database;
 
 class DatabasesTest extends TestCase
 {
-    private function getNotionClass(string $jsonBody): PhpNotionClass
+    private function getNotion(string $jsonBody): Notion
     {
-        return new class($jsonBody) extends PhpNotionClass {
+        return new class($jsonBody) extends Notion {
             public function __construct(string $jsonBody)
             {
                 $mock = new MockHandler([
@@ -38,7 +38,7 @@ class DatabasesTest extends TestCase
     /** @test */
     public function it_can_retrieve_a_database()
     {
-        $notion = $this->getNotionClass($this->getDatabaseJson());
+        $notion = $this->getNotion($this->getDatabaseJson());
 
         $database = $notion->databases()->retrieve('d65a5216-46ba-479a-961f-67bb7a05f56c');
         $this->assertInstanceOf(Database::class, $database);
