@@ -27,7 +27,7 @@ class NotionClient
 
     public function getResource(string $resourceType, string $resourceId)
     {
-        $response = $this->attemptRequest('get', "/v1/${resourceType}/${resourceId}");
+        $response = $this->makeRequest('get', "/v1/${resourceType}/${resourceId}");
 
         if ($this->attemptSuccessful()) {
             return $response;
@@ -36,7 +36,7 @@ class NotionClient
         throw new NotionResourceException($this->getMessage(), $this->statusCode());
     }
 
-    public function attemptRequest(string $method, string $uri, array $params = [], $headers = [])
+    public function makeRequest(string $method, string $uri, array $params = [], $headers = [])
     {
         try {
             $queryMethods = ['get', 'delete'];
@@ -49,8 +49,7 @@ class NotionClient
             $this->successful = $response->getReasonPhrase() === 'OK';
             $this->status = $response->getStatusCode();
 
-            return json_decode($response->getBody());
-            ;
+            return json_decode($response->getBody());;
         } catch (Exception $exception) {
             $this->recordError($exception);
         }
