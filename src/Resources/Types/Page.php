@@ -25,8 +25,7 @@ class Page
         object $properties,
         bool $archived,
         object $parent
-    )
-    {
+    ) {
         $this->object = $object;
         $this->id = $id;
         $this->createdTime = $createdTime;

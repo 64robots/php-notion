@@ -28,7 +28,7 @@ class NotionClient
 
     public function getResource(string $resourceType, string $resourceId = null)
     {
-        $uri = !is_null($resourceId) ? "/v1/${resourceType}/${resourceId}" : "/v1/${resourceType}";
+        $uri = ! is_null($resourceId) ? "/v1/${resourceType}/${resourceId}" : "/v1/${resourceType}";
 
         $response = $this->makeRequest('get', $uri);
 
@@ -43,17 +43,18 @@ class NotionClient
     {
         $response = $this->makeRequest('POST', "/v1/$resourceType", $payload);
 
-        if($this->attemptSuccessful()) {
+        if ($this->attemptSuccessful()) {
             return $response;
         }
-         throw new NotionResourceException($this->getMessage(), $this->statusCode());
+
+        throw new NotionResourceException($this->getMessage(), $this->statusCode());
     }
 
     public function updateResource(string $resourceType, string $resourceId, $payload)
     {
         $response = $this->makeRequest('PUT', "/v1/$resourceType/$resourceId", $payload);
 
-        if($this->attemptSuccessful()) {
+        if ($this->attemptSuccessful()) {
             return $response;
         }
 
@@ -64,7 +65,7 @@ class NotionClient
     {
         $response = $this->makeRequest('DELETE', "/v1/$resourceType/$resourceId");
 
-        if($this->attemptSuccessful()) {
+        if ($this->attemptSuccessful()) {
             return $response;
         }
 

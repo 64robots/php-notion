@@ -31,7 +31,7 @@ class Notion
         /**
          * @psalm-suppress RedundantPropertyInitializationCheck
          */
-        if (!isset($this->databases)) {
+        if (! isset($this->databases)) {
             $this->databases = new Databases($this->notionClient);
         }
 
@@ -43,7 +43,7 @@ class Notion
         /**
          * @psalm-suppress RedundantPropertyInitializationCheck
          */
-        if (!isset($this->pages)) {
+        if (! isset($this->pages)) {
             $this->pages = new Pages($this->notionClient);
         }
 
