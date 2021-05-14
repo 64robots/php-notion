@@ -36,14 +36,15 @@ class NotionClient
         throw new NotionResourceException($this->getMessage(), $this->statusCode());
     }
 
-    public function attemptRequest(string $method, string $uri, array $params = [])
+    public function attemptRequest(string $method, string $uri, array $params = [], $headers = [])
     {
         try {
             $queryMethods = ['get', 'delete'];
 
-            $body = in_array(strtolower($method), $queryMethods) ? ['query' => $params] : ['json' => $params];
+            $requestOptions[] = ['headers' => $headers];
+            $requestOptions[] = in_array(strtolower($method), $queryMethods) ? ['query' => $params] : ['json' => $params];
 
-            $response = $this->client->request($method, $uri, $body);
+            $response = $this->client->request($method, $uri, $requestOptions);
 
             $this->successful = $response->getReasonPhrase() === 'OK';
             $this->status = $response->getStatusCode();
