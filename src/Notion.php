@@ -2,10 +2,10 @@
 
 namespace R64\PhpNotion;
 
-use R64\PhpNotion\Integrations\NotionClient;
+use R64\PhpNotion\Client\NotionClient;
 use R64\PhpNotion\Resources\Databases;
 
-class PhpNotionClass
+class Notion
 {
     const NOTION_API_BASE_URI = 'https://api.notion.com';
     const DEFAULT_TIMEOUT_SECONDS = 30;

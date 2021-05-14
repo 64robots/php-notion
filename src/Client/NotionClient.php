@@ -1,6 +1,6 @@
 <?php
 
-namespace R64\PhpNotion\Integrations;
+namespace R64\PhpNotion\Client;
 
 use GuzzleHttp\Client;
 
