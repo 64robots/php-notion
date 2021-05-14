@@ -1,12 +1,12 @@
 {
-    "name": "64robots/php_notion",
+    "name": "64robots/php-notion",
     "description": "Package to use Notion API from PHP",
     "keywords": [
         "64robots",
         "php_notion",
         "notion"
     ],
-    "homepage": "https://github.com/64robots/php_notion",
+    "homepage": "https://github.com/64robots/php-notion",
     "license": "MIT",
     "authors": [
         {
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "64robots\\PhpNotion\\": "src"
+            "R64robots\\PhpNotion\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "64robots\\PhpNotion\\Tests\\": "tests"
+            "R64robots\\PhpNotion\\Tests\\": "tests"
         }
     },
     "scripts": {
