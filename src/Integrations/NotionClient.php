@@ -16,8 +16,8 @@ class NotionClient
     ) {
         $this->client = $restClient ?: new Client([
             'base_uri' => $baseUri,
-            'timeout'  => $timeout,
-            'headers'  => ['Authorization' => "Bearer {$accessToken}"]
+            'timeout' => $timeout,
+            'headers' => ['Authorization' => "Bearer {$accessToken}"],
         ]);
     }
 

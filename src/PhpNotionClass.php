@@ -24,7 +24,7 @@ class PhpNotionClass
 
     public function databases(): Databases
     {
-        if (!isset($this->databases)) {
+        if (! isset($this->databases)) {
             $this->databases = new Databases($this->notionClient);
         }
 
