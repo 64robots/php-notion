@@ -1,7 +1,6 @@
 <?php
 namespace R64\PhpNotion\Tests;
 
-use R64\PhpNotion\Notion;
 use R64\PhpNotion\Resources\Types\Page;
 use R64\PhpNotion\Tests\mocks\PageResponse;
 
@@ -29,18 +28,18 @@ class PagesTest extends TestCase
 
         $payload = [
             "parent" => [
-                "database_id" => "4eb895ed2227406f80bcd4565f304cf4"
+                "database_id" => "4eb895ed2227406f80bcd4565f304cf4",
             ],
             "properties" => [
                 "Name" => [
                     "title" => [
                         [
                             "text" => [
-                                "content" => "Test Sample Page Header"
-                            ]
-                        ]
-                    ]
-                ]
+                                "content" => "Test Sample Page Header",
+                            ],
+                        ],
+                    ],
+                ],
             ],
             "children" => [
                 [
@@ -51,11 +50,11 @@ class PagesTest extends TestCase
                             [
                                 "type" => "text",
                                 "text" => [
-                                    "content" => "Lacinato kale"
-                                ]
-                            ]
-                        ]
-                    ]
+                                    "content" => "Lacinato kale",
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     "object" => "block",
@@ -67,14 +66,14 @@ class PagesTest extends TestCase
                                 "text" => [
                                     "content" => "Lacinato kale is a variety of kale with a long tradition in Italian cuisine, especially that of Tuscany. It is also known as Tuscan kale, Italian kale, dinosaur kale, kale, flat back kale, palm tree kale, or black Tuscan palm.",
                                     "link" => [
-                                        "url" => "https://en.wikipedia.org/wiki/Lacinato_kale"
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                        "url" => "https://en.wikipedia.org/wiki/Lacinato_kale",
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $response = $notion->pages()->create($payload);
@@ -93,11 +92,11 @@ class PagesTest extends TestCase
                     "title" => [
                         [
                             "text" => [
-                                "content" => "Sample Page Header"
-                            ]
-                        ]
-                    ]
-                ]
+                                "content" => "Sample Page Header",
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ]);
 

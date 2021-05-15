@@ -52,7 +52,7 @@ class PageResponse
             "last_edited_time" => "2021-05-15T10:11:07.557Z",
             "parent" => [
                 "type" => "database_id",
-                "database_id" => "4eb895ed-2227-406f-80bc-d4565f304cf4"
+                "database_id" => "4eb895ed-2227-406f-80bc-d4565f304cf4",
             ],
             "archived" => false,
             "properties" => [
@@ -64,7 +64,7 @@ class PageResponse
                             "type" => "text",
                             "text" => [
                                 "content" => "Tuscan Kale",
-                                "link" => null
+                                "link" => null,
                             ],
                             "annotations" => [
                                 "bold" => false,
@@ -72,15 +72,14 @@ class PageResponse
                                 "strikethrough" => false,
                                 "underline" => false,
                                 "code" => false,
-                                "color" => "default"
+                                "color" => "default",
                             ],
                             "plain_text" => "Tuscan Kale",
-                            "href" => null
-                        ]
-                    ]
-                ]
-            ]
+                            "href" => null,
+                        ],
+                    ],
+                ],
+            ],
         ]);
     }
-
 }

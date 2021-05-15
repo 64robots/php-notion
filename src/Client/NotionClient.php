@@ -100,7 +100,6 @@ class NotionClient
             $this->status = $response->getStatusCode();
 
             return json_decode((string)$response->getBody());
-
         } catch (Exception $exception) {
             $this->recordError($exception);
         }
