@@ -42,4 +42,45 @@ class PageResponse
             ],
         ]);
     }
+
+    public function created()
+    {
+        return json_encode([
+            "object" => "page",
+            "id" => "7d9623b8-5692-4379-b2cb-c9d566103e67",
+            "created_time" => "2021-05-15T10:11:07.555Z",
+            "last_edited_time" => "2021-05-15T10:11:07.557Z",
+            "parent" => [
+                "type" => "database_id",
+                "database_id" => "4eb895ed-2227-406f-80bc-d4565f304cf4"
+            ],
+            "archived" => false,
+            "properties" => [
+                "Name" => [
+                    "id" => "title",
+                    "type" => "title",
+                    "title" => [
+                        [
+                            "type" => "text",
+                            "text" => [
+                                "content" => "Tuscan Kale",
+                                "link" => null
+                            ],
+                            "annotations" => [
+                                "bold" => false,
+                                "italic" => false,
+                                "strikethrough" => false,
+                                "underline" => false,
+                                "code" => false,
+                                "color" => "default"
+                            ],
+                            "plain_text" => "Tuscan Kale",
+                            "href" => null
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+    }
+
 }

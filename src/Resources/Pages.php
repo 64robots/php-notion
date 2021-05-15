@@ -25,7 +25,12 @@ class Pages extends ApiResource
         );
     }
 
-    public function create(array $payload)
+    /**
+     * @param array $payload
+     * @return Page
+     * @throws \R64\PhpNotion\Exceptions\NotionResourceException
+     */
+    public function create(array $payload): Page
     {
         $response = $this->notionClient->createResource('pages', $payload);
 
@@ -40,7 +45,13 @@ class Pages extends ApiResource
         );
     }
 
-    public function update(string $pageId, array $payload)
+    /**
+     * @param string $pageId
+     * @param array $payload
+     * @return Page
+     * @throws \R64\PhpNotion\Exceptions\NotionResourceException
+     */
+    public function update(string $pageId, array $payload): Page
     {
         $response = $this->notionClient->updateResource('pages', $pageId, $payload);
 
@@ -53,10 +64,5 @@ class Pages extends ApiResource
             $response->archived,
             $response->parent
         );
-    }
-
-    public function delete($pageId)
-    {
-        return $this->notionClient->deleteResource("pages", $pageId);
     }
 }

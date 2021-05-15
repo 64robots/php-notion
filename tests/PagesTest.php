@@ -23,10 +23,84 @@ class PagesTest extends TestCase
     }
 
     /** @test */
-    public function it_can_list_pages()
+    public function it_can_create_a_page()
     {
-        $notion = new Notion('secret_qi3932N6ZDwp8FjxCAOhZEDyKua57jNqRoIdZNpluGm');
+        $notion = $this->getMockClient(200, (new PageResponse())->created());
 
-        $notion->pages()->create();
+        $payload = [
+            "parent" => [
+                "database_id" => "4eb895ed2227406f80bcd4565f304cf4"
+            ],
+            "properties" => [
+                "Name" => [
+                    "title" => [
+                        [
+                            "text" => [
+                                "content" => "Test Sample Page Header"
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            "children" => [
+                [
+                    "object" => "block",
+                    "type" => "heading_2",
+                    "heading_2" => [
+                        "text" => [
+                            [
+                                "type" => "text",
+                                "text" => [
+                                    "content" => "Lacinato kale"
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                [
+                    "object" => "block",
+                    "type" => "paragraph",
+                    "paragraph" => [
+                        "text" => [
+                            [
+                                "type" => "text",
+                                "text" => [
+                                    "content" => "Lacinato kale is a variety of kale with a long tradition in Italian cuisine, especially that of Tuscany. It is also known as Tuscan kale, Italian kale, dinosaur kale, kale, flat back kale, palm tree kale, or black Tuscan palm.",
+                                    "link" => [
+                                        "url" => "https://en.wikipedia.org/wiki/Lacinato_kale"
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ];
+
+        $response = $notion->pages()->create($payload);
+
+        $this->assertInstanceOf(Page::class, $response);
+    }
+
+    /** @test */
+    public function it_can_update_a_page()
+    {
+        $notion = $this->getMockClient(200, (new PageResponse())->single());
+
+        $response = $notion->pages()->update('7d9623b8-5692-4379-b2cb-c9d566103e67', [
+            "properties" => [
+                "Name" => [
+                    "title" => [
+                        [
+                            "text" => [
+                                "content" => "Sample Page Header"
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+        ]);
+
+        $this->assertInstanceOf(Page::class, $response);
     }
 }

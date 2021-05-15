@@ -61,6 +61,12 @@ class NotionClient
         throw new NotionResourceException($this->getMessage(), $this->statusCode());
     }
 
+    /**
+     * @param string $resourceType
+     * @param string $resourceId
+     * @return mixed
+     * @throws NotionResourceException
+     */
     public function deleteResource(string $resourceType, string $resourceId)
     {
         $response = $this->makeRequest('DELETE', "/v1/$resourceType/$resourceId");
@@ -72,20 +78,29 @@ class NotionClient
         throw new NotionResourceException($this->getMessage(), $this->statusCode());
     }
 
+    /**
+     * @param string $method
+     * @param string $uri
+     * @param array $params
+     * @param array $headers
+     * @return mixed
+     */
     public function makeRequest(string $method, string $uri, array $params = [], $headers = [])
     {
         try {
             $queryMethods = ['get', 'delete'];
 
-            $requestOptions[] = ['headers' => $headers];
-            $requestOptions[] = in_array(strtolower($method), $queryMethods) ? ['query' => $params] : ['json' => $params];
+            $method = strtolower($method);
 
-            $response = $this->client->request($method, $uri, $requestOptions);
+            $requestOptions = in_array(strtolower($method), $queryMethods) ? ['query' => $params] : ['json' => $params];
+
+            $response = $this->client->$method($uri, $requestOptions);
 
             $this->successful = $response->getReasonPhrase() === 'OK';
             $this->status = $response->getStatusCode();
 
             return json_decode((string)$response->getBody());
+
         } catch (Exception $exception) {
             $this->recordError($exception);
         }
