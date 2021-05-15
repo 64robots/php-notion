@@ -11,12 +11,12 @@ class Users extends ApiResource
     {
         $response = $this->notionClient->getResource("users");
 
-        $mapped = array_map(fn($notionUser) => $this->mapUser($notionUser) ,$response->results);
+        $mapped = array_map(fn ($notionUser) => $this->mapUser($notionUser), $response->results);
 
-       return [
+        return [
            'users' => $mapped,
            'next' => $response->next_cursor,
-           'hasMore' => $response->has_more
+           'hasMore' => $response->has_more,
        ];
     }
 

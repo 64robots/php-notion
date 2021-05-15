@@ -23,7 +23,7 @@ class NotionUser
     {
         $this->object = $object;
 
-        $this->id  = $id;
+        $this->id = $id;
 
         $this->name = $name;
 

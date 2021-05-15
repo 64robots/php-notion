@@ -9,7 +9,7 @@ class UsersTest extends TestCase
     /** @test */
     public function it_can_list_users()
     {
-        $results  = $this->getMockClient(200, (new UsersResponse())->list())->users()->list();
+        $results = $this->getMockClient(200, (new UsersResponse())->list())->users()->list();
         $this->assertInstanceOf(NotionUser::class, $results['users'][0]);
         $this->assertIsArray($results);
     }

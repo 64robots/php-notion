@@ -15,8 +15,8 @@ class UsersResponse
                         "avatar_url" => "https://s3-us-west-2.amazonaws.com/public.notion-static.com/cf5eb1cd-d9b2-448c-9688-8c27f0a69dc5/22339095_10101953299563963_3353940092955021241_o.jpg",
                         "type" => "person",
                         "person" => [
-                            "email" => "rob@64robots.com"
-                        ]
+                            "email" => "rob@64robots.com",
+                        ],
                     ],
                     [
                         "object" => "user",
@@ -24,11 +24,11 @@ class UsersResponse
                         "name" => "Nuxt Module",
                         "avatar_url" => null,
                         "type" => "bot",
-                        "bot" => '{}'
-                    ]
+                        "bot" => '{}',
+                    ],
                 ],
                 "next_cursor" => null,
-                "has_more" => false
+                "has_more" => false,
             ]);
     }
 
@@ -41,7 +41,7 @@ class UsersResponse
                 "avatar_url" => null,
                 "type" => "bot",
                 "bot" => [
-                ]
+                ],
             ]);
     }
 }
