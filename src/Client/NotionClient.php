@@ -26,9 +26,11 @@ class NotionClient
         ]);
     }
 
-    public function getResource(string $resourceType, string $resourceId)
+    public function getResource(string $resourceType, string $resourceId = null)
     {
-        $response = $this->makeRequest('get', "/v1/${resourceType}/${resourceId}");
+        $uri = ! is_null($resourceId) ? "/v1/${resourceType}/${resourceId}" : "/v1/${resourceType}";
+
+        $response = $this->makeRequest('get', $uri);
 
         if ($this->attemptSuccessful()) {
             return $response;
@@ -37,15 +39,62 @@ class NotionClient
         throw new NotionResourceException($this->getMessage(), $this->statusCode());
     }
 
+    public function createResource(string $resourceType, array $payload = [])
+    {
+        $response = $this->makeRequest('POST', "/v1/$resourceType", $payload);
+
+        if ($this->attemptSuccessful()) {
+            return $response;
+        }
+
+        throw new NotionResourceException($this->getMessage(), $this->statusCode());
+    }
+
+    public function updateResource(string $resourceType, string $resourceId, $payload)
+    {
+        $response = $this->makeRequest('PUT', "/v1/$resourceType/$resourceId", $payload);
+
+        if ($this->attemptSuccessful()) {
+            return $response;
+        }
+
+        throw new NotionResourceException($this->getMessage(), $this->statusCode());
+    }
+
+    /**
+     * @param string $resourceType
+     * @param string $resourceId
+     * @return mixed
+     * @throws NotionResourceException
+     */
+    public function deleteResource(string $resourceType, string $resourceId)
+    {
+        $response = $this->makeRequest('DELETE', "/v1/$resourceType/$resourceId");
+
+        if ($this->attemptSuccessful()) {
+            return $response;
+        }
+
+        throw new NotionResourceException($this->getMessage(), $this->statusCode());
+    }
+
+    /**
+     * @param string $method
+     * @param string $uri
+     * @param array $params
+     * @param array $headers
+     * @return mixed
+     */
     public function makeRequest(string $method, string $uri, array $params = [], $headers = [])
     {
         try {
             $queryMethods = ['get', 'delete'];
 
-            $requestOptions[] = ['headers' => $headers];
-            $requestOptions[] = in_array(strtolower($method), $queryMethods) ? ['query' => $params] : ['json' => $params];
+            $method = strtolower($method);
 
-            $response = $this->client->request($method, $uri, $requestOptions);
+            $requestOptions = in_array(strtolower($method), $queryMethods) ? ['query' => $params] : ['json' => $params];
+
+            $response = $this->client->$method($uri, $requestOptions);
 
             $this->successful = $response->getReasonPhrase() === 'OK';
             $this->status = $response->getStatusCode();
