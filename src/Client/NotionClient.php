@@ -22,7 +22,7 @@ class NotionClient
         $this->client = $restClient ?: new Client([
             'base_uri' => $baseUri,
             'timeout' => $timeout,
-            'headers' => ['Authorization' => "Bearer {$accessToken}"],
+            'headers' => ['Authorization' => "Bearer {$accessToken}",'Notion-Version' => '2021-05-13'],
         ]);
     }
 
