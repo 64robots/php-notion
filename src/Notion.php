@@ -5,6 +5,7 @@ namespace R64\PhpNotion;
 use R64\PhpNotion\Client\NotionClient;
 use R64\PhpNotion\Resources\Databases;
 use R64\PhpNotion\Resources\Pages;
+use R64\PhpNotion\Resources\Users;
 
 class Notion
 {
@@ -16,6 +17,8 @@ class Notion
     private Databases $databases;
 
     private Pages $pages;
+
+    private Users $users;
 
     public function __construct(string $accessToken)
     {
@@ -48,5 +51,17 @@ class Notion
         }
 
         return $this->pages;
+    }
+
+    public function users(): Users
+    {
+        /**
+         * @psalm-suppress RedundantPropertyInitializationCheck
+         */
+        if (! isset($this->users)) {
+            $this->users = new Users($this->notionClient);
+        }
+
+        return $this->users;
     }
 }
